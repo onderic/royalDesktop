@@ -25,10 +25,11 @@
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
+        "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.royalprinceagencyltd.myapp",
+     "identifier": "com.royalprinceagencyltd.myapp",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -50,12 +51,7 @@
       "csp": null
     },
     "updater": {
-      "active": true,
-      "endpoints": [
-        "https://github.com/onderic/royalDesktop/releases/download/{{current_version}}/{{target}}"
-      ],
-      "dialog": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDY3MkNGQ0IzNDAzMEE3QzcKUldUSHB6QkFzL3dzWnlmSW5kc1ZWVVZ3bTdOYUxpYXNOTkRrLzJ3SWx1Ky9nb2xCa1o1dzd3b2oK"
+      "active": false
     },
     "windows": [
       {
