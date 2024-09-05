@@ -39,7 +39,13 @@ jobs:
       - name: Install frontend dependencies
         run: npm install 
 
+      - name: Set up Tauri private key
+        run: echo "${{ secrets.TAURI_PRIVATE_KEY }}" > private.pem
+        shell: bash
+
       - name: Build the application
+        env:
+          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
         run: npm run tauri build
 
       - name: Create GitHub Release
@@ -47,7 +53,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: app-v${{ github.run_number }} # Automatically generate a version tag
+          tagName: app-v${{ github.run_number }}
           releaseName: 'App v${{ github.run_number }}'
           releaseBody: 'See the assets to download this version and install.'
           releaseDraft: false
@@ -57,8 +63,8 @@ jobs:
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
-          tag: app-v${{ github.run_number }} # Match the tag to the release
+          tag: app-v${{ github.run_number }}
           files: |
             target/release/bundle/**  # Adjust this path to match your build output.
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
